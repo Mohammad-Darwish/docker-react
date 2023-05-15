@@ -1,20 +1,9 @@
 pipeline {
-    agent any
-
+    agent { docker { image 'node:18.16.0-alpine' } }
     stages {
-        stage('Checkout') {
+        stage('build') {
             steps {
-                // Checkout source code from your repository
-                // git 'https://github.com/your/repository.git'
-                sh 'ls -l'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                // Install dependencies and build JavaScript code
-                sh 'npm install'
-                sh 'npm run build'
+                sh 'node --version'
             }
         }
 
