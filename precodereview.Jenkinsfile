@@ -1,7 +1,5 @@
 pipeline {
     agent any
-    
-    tools {nodejs "nodejs"}
 
     stages {
         stage('Checkout') {
@@ -9,6 +7,7 @@ pipeline {
                 // Checkout source code from your repository
                 // git 'https://github.com/your/repository.git'
                 sh 'ls -l'
+                sh 'docker --version'
             }
         }
 
