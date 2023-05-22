@@ -17,23 +17,14 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Install dependencies and build JavaScript code
-                sh 'npm version'
+                sh 'docker build -t mohammad/docker-react -f Dockerfile.dev .'
             }
         }
-
-        // stage('Test') {
-        //     steps {
-                // Run tests for your JavaScript code
-                // sh 'npm run test'
-            // }
-        // }
-
-        // stage('Deploy') {
-        //     steps {
-                // Deploy your JavaScript code to a server or cloud platform
-                // sh 'npm run deploy'
-            // }
-        // }
+    }
+    post {
+        always {
+            echo 'One way or another, I have finished'
+            deleteDir() /* clean up our workspace */
+        }
     }
 }
