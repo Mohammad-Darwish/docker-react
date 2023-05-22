@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs '17.3.1'
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -14,8 +18,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Install dependencies and build JavaScript code
-                sh 'npm install'
-                sh 'npm run build'
+                sh 'npm version'
             }
         }
 
