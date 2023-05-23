@@ -16,10 +16,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Login to Docker Hub
-      uses: docker login
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+      run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+      # uses: docker login
+      # with:
+      #   username: ${{ secrets.DOCKERHUB_USERNAME }}
+      #   password: ${{ secrets.DOCKERHUB_TOKEN }}
     # - name: Build the Docker image
     #   run: docker build . --file Dockerfile.dev --tag mdarwish/react-test
     # - name: Run Docker image
